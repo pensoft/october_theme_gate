@@ -1,0 +1,49 @@
+[menu footer_menu]
+start = "id-8"
+activeNode = 0
+listItemClasses = "item"
+primaryClasses = "nav nav-pills"
+secondaryClasses = "dropdown-menu"
+numberOfLevels = 2
+==
+<div class="container-fluid border-box dark-background">
+    <div class="container footer_container">
+        <div class="row mb-4">
+            <div class="col-md-5 col-xs-12 start-md center-xs"><img class="project_footer_logo" src="{{ 'GATE-logo-white.svg'|media }}"></div>
+            <div class="col-md-7 com-xs-12">
+                <div class="row">
+                    <div class="col-md-3 col-xs-12 footer-menu-container">
+                        {% component 'footer_menu' %}
+                    </div>
+                    <div class="col-md-5 col-xs-12 footer_info">
+                        <span class="footer_heading">Contact</span>
+                        <div class="contact_description">
+                            Anika Müller-Karabil<br>
+                            <a href="mailto:anika.gate@miller.international">anika.gate@miller.international</a><br>
+                            Marie Alavi<br>
+                            <a href="mailto:marie.gate@miller.international">marie.gate@miller.international</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-xs-12 footer_info">
+                        <span class="footer_heading">Address</span>
+                        <div class="contact_description">
+                            <span>MILLER INTERNATIONAL KNOWLEDGE<br>
+                            Calle Fuerteventura 4<br>
+                                28703 Madrid, Spain</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row top_border">
+            <div class="col-md-6 col-xs-12 start-md center-xs">
+                <a href="#">Privacy policy</a>
+            </div>
+            <div class="col-md-6 col-xs-12 end-md center-xs powered-by">
+                <span>Designed and powered by <a href="https://pensoft.net/" target="_blank">
+                    <img class="pensoft_logo" src="{{ 'assets/images/pensoft-logo.svg'|theme }}" /></a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

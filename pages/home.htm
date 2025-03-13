@@ -1,0 +1,142 @@
+url = "/"
+layout = "default"
+title = "GATE"
+is_hidden = 0
+meta_description = "GATE"
+robot_index = "index"
+robot_follow = "follow"
+
+[jumbotron vision]
+jumbotron = "gates-vision"
+title = 1
+background = "transperant"
+templates = "template3"
+description_limit = 0
+
+[jumbotron mission]
+jumbotron = "gates-mission"
+title = 1
+background = "transperant"
+templates = "template3"
+description_limit = 0
+==
+<?php
+use Pensoft\Partners\Models\Partners as Partner;
+
+
+function onStart(){
+    $this['consortium_partners'] = Partner::get();
+}
+?>
+==
+
+    <div class="container1400">
+        <div class="row">
+            <div class="col-md-6 col-xs-12">
+                <div class="vision">
+                    {% component 'vision' %}
+                    <span class="read_more" href="">Read more</span>
+                </div>
+            </div>
+            <div class="col-md-6 col-xs-12">
+                <div class="mission">
+                    {% component 'mission' %}
+                    <span class="read_more" href="">Read more</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div class="container mt-4">
+    <h1 class="display-1">Who are the GATE’S stakeholders?</h1>
+</div>
+
+
+<!-- latest from news -->
+<div class="container-fluid highlights-news">
+<!--    <div class="trigger_prev"></div>-->
+<!--    <div class="trigger_next"></div>-->
+
+    <div class="news-carousel">
+
+
+        <div class="home-news-highlights">
+            <div class="row news-item stakeholder1">
+                <div class="col-md-12 col-xs-12 news-content">
+                    <div class="stakeholder-title">Open Science Trainer</div>
+                    <div class="stakeholder-description">Trainers of various Open Science actors: Researcher, University Student, Data Curator, Data Steward/Librarian, OS Educator/Trainer, Data Research ...</div>
+                    <span class="read_more">{{'Read more' |_}}</span>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="home-news-highlights">
+            <div class="row news-item stakeholder2">
+                <div class="col-md-12 col-xs-12 news-content">
+                    <div class="stakeholder-title">Research Communities</div>
+                    <div class="stakeholder-description">Facilitate the connection of their communities (mostly trainers on Open Science) with the GATE by disseminating GATE’s objectives and engaging their trainers.</div>
+                    <span class="read_more">{{'Read more' |_}}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="home-news-highlights">
+            <div class="row news-item stakeholder3">
+                <div class="col-md-12 col-xs-12 news-content">
+                    <div class="stakeholder-title">Research Eco System</div>
+                    <div class="stakeholder-description">Actors of the European Research Area (ERA) and beyond who recognise the contexts, differences and interplays in the Open Science eco-system.</div>
+                    <span class="read_more">{{'Read more' |_}}</span>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="home-news-highlights">
+            <div class="row news-item stakeholder4">
+                <div class="col-md-12 col-xs-12 news-content">
+                    <div class="stakeholder-title">Research Corner</div>
+                    <div class="stakeholder-description">Actors of the European Research Area (ERA) and beyond who recognise the contexts, differences and interplays in the Open Science eco-system.</div>
+                    <span class="read_more">{{'Read more' |_}}</span>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="home-news-highlights">
+            <div class="row news-item stakeholder5">
+                <div class="col-md-12 col-xs-12 news-content">
+                    <div class="stakeholder-title">GATE Partners</div>
+                    <div class="stakeholder-description">Actors of the European Research Area (ERA) and beyond who recognise the contexts, differences and interplays in the Open Science eco-system.</div>
+                    <span class="read_more">{{'Read more' |_}}</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+<!--    <div class="center-xs">-->
+<!--        <a class="btn btn-primary view_all" href="">View all</a>-->
+<!--    </div>-->
+</div>
+
+
+
+
+
+<div class="container">
+    <div class="row middle-xs between-xs consortium_partners">
+        <div class="col-xs-12 center-xs mb-1 mt-2"><h1 class="display-1">GATE Supporters</h1></div>
+        <div class="col-xs-12 center-xs">
+            <div class="row">
+                {% for c in consortium_partners %}
+                <div class="col-md col-xs-12 partner_logo">
+                    <a href="{{c.instituion_url}}" target="_blank">
+                        <img alt="{{ c.instituion }}" src="{{c.cover.thumb(auto,47,{'mode':'crop'})}}"></a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
