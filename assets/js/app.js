@@ -1,5 +1,3 @@
-$(window).scroll(animateNumbers);
-
 var viewed = false;
 
 var width = window.innerWidth;
@@ -301,19 +299,15 @@ function hideSearchForm(){
     // $('nav a').show();
 }
 
-
-function isScrolledIntoView(elem) {
-	var docViewTop = $(window).scrollTop();
-	var docViewBottom = docViewTop + $(window).height();
-
-	if($(elem).height()){
-		var elemTop = $(elem).offset().top;
-		var elemBottom = elemTop + $(elem).height();
-
-		return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
-	}
-	return;
-
+function expandBiography(el){
+    var desc = $(el).parent().find('.description');
+    if(desc.is(':visible')){
+        desc.slideUp();
+        $(el).removeClass('expanded');
+    }else{
+        desc.slideDown();
+        $(el).addClass('expanded');
+    }
 }
 
 
@@ -321,11 +315,6 @@ function isScrolledIntoView(elem) {
 function scrollDown(){
 	var element = $('#layout-content');
 	$("html, body").animate({ scrollTop: element.offset().top - 190 }, 500);
-}
-
-
-function hideMe(elem){
-    $(elem).parent().hide();
 }
 
 
@@ -401,154 +390,6 @@ function scrollToField(errors){
         }, 1000);
         return false; // breaks
     });
-}
-
-function handlePilotsSVGMapMouseMove(event) {
-    var title = $(event.target).parent().attr('title');
-    var tooltip = document.getElementById("tooltip");
-
-    switch (title) {
-        case 'San Miguel Island':
-        case 'Xistral Mountains of Galicia':
-        case 'Ebro':
-        case 'Eifel - High Fens':
-        case 'Weiße Elster catchment':
-        case 'Pärnu catchment':
-        case 'Alam-Pedja':
-            break;
-        default:
-            return tooltip.classList.remove("active");
-    }
-    // var x = event.clientX;
-    // var y = event.clientY;
-
-    var x = $(event.target).offset().left;
-    var y = $(event.target).offset().top;
-
-    tooltip.style.left = (x + 30) + "px";
-    tooltip.style.top = (y - 30) + "px";
-
-    tooltip.innerHTML = title;
-    tooltip.classList.add("active");
-
-}
-
-function onPilots(pTitle) {
-    var tooltip = document.getElementById("tooltip");
-    // tooltip.classList.remove("active");
-    if(!$("g[title='"+pTitle+"']").hasClass('active_path')){
-        $("g[title='"+pTitle+"']").addClass('active_path');
-
-        $('.accordion-border').each(function(){
-            var title = $(this).find(".accordion-toggle .col-xs.start-xs").text();
-            var toggler = $(this).find(".accordion-toggle");
-            if ( title.indexOf(pTitle) >= 0 && !toggler.next(".accordion-content").is(':visible') ){
-                toggler.trigger( "click" );
-                $('html, body').animate({
-                    scrollTop: toggler.parent().offset().top - 150
-                }, 500);
-            }
-        });
-    }else{
-        $("g[title='"+pTitle+"']").removeClass('active_path');
-        $('.accordion-border').each(function(){
-            var title = $(this).find(".accordion-toggle .col-xs.start-xs").text();
-            var toggler = $(this).find(".accordion-toggle");
-            if ( title.indexOf(pTitle) >= 0 && toggler.next(".accordion-content").is(':visible') ){
-                toggler.trigger( "click" );
-            }
-        });
-    }
-}
-
-function initButtonStyle(){
-    $( "<span class=\"su_button_circle desplode-circle\"></span>" ).insertBefore( ".btn.btn-primary" );
-    $('.btn.btn-primary').wrapInner('<span class="button_text_container">');
-    $('.btn.btn-primary').addClass('button_su_inner').removeClass('btn-primary');
-    $('.col-xs-12.col-md-3.end-xs.end-md').wrapInner('<div class="button_su download">');
-    $('.library form:has(.button_su_inner)').wrap('<div class="button_su download">');
-    $('.library a .button_text_container').text('Download');
-}
-
-function animateNumbers() {
-	if (isScrolledIntoView($(".numbers")) && !viewed) {
-		viewed = true;
-		$('.count').each(function () {
-			var size = $(this).text().split(".")[1] ? $(this).text().split(".")[1].length : 0;
-			$(this).prop('Counter',0).animate({
-				Counter: $(this).text()
-			}, {
-				duration: 1800,
-				easing: 'swing',
-				step: function (now) {
-					$(this).text(parseFloat(now).toFixed(size));
-				}
-			});
-		});
-	}
-}
-
-function fetchMails(i, searchStr){
-    // $('.group_mailing_list').hide();
-    if($('.group_mailing_list_'+i).is(":visible")){
-        $('.group_mailing_list_'+i).hide();
-    }else{
-        //groups
-        $.request('onFetchMailingList', {
-            update: { 'mailing_list': '#mailing_list_tooltip_content_'+i,
-            },
-            data: {
-                search_str: searchStr
-            },
-        }).then(response => {
-            $('.group_mailing_list_'+i).html('<a class="close-btn" onclick="hideMe(this)">X</a>' + response.mailing_list);
-        });
-        $('.group_mailing_list').hide();
-        $('.group_mailing_list_'+i).show();
-    }
-
-}
-
-
-function fetchSingleMail(i, searchStr){
-    if($('.single_mailing_list_'+i).is(":visible")){
-        $('.single_mailing_list_'+i).hide();
-    }else{
-        //groups
-        $.request('onFetchSingleMail', {
-            update: { 'individual_email': '#individual_tooltip_content_'+i,
-            },
-            data: {
-                search_str: searchStr
-            },
-        }).then(response => {
-            $('.single_mailing_list_'+i).html('<a class="close-btn" onclick="hideMe(this)">X</a>' + response.individual_email);
-        });
-        $('.single_mailing_list').hide();
-        $('.single_mailing_list_'+i).show();
-    }
-}
-
-function initMailingTooltip(){
-    var searchStr = '';
-    $('.group-holder').eq(0).find('.inputWithTooltip span').each(function(i, obj) {
-        searchStr = $.trim($(obj).text());
-        $(this).parent().css('display', 'inline-grid');
-        $('<img src="/storage/app/media/CMS_icons_groups.svg" style="max-width: 16px; margin-left: 5px;" class="icon mailing_list_tooltip_'+i+'" onclick="fetchMails('+i+', \'' + searchStr + '\')" />').insertAfter($(this).parent());
-        $('<div class="group_mailing_list group_mailing_list_' + i + '" style="display: none;"></div>').insertAfter($(this).parent());
-
-
-    });
-    $('.group-holder').eq(1).find('.inputWithTooltip span').each(function(i, obj) {
-        searchStr = $.trim($(obj).text());
-        $('<img src="/storage/app/media/CMS_icons_individuals.svg" style="max-width: 16px; margin-left: 5px;" class="icon mailing_list_tooltip_individuals_'+i+'" onclick="fetchSingleMail('+i+', \'' + searchStr + '\')" />').insertAfter($(this).parent());
-        $(this).parent().css('display', 'inline-grid');
-        $('<div class="single_mailing_list single_mailing_list_' + i + '" style="display: none;"></div>').insertAfter($(this).parent());
-    });
-
-    $('.group-holder').eq(0).prepend( "<p style='margin-left: 10px; width: 100%;'>Prior to sending group emails, please make sure that all individuals you want to contact have been included in the respective group by clicking on the group icon.</p><p></p>" );
-    $('.group-holder').eq(1).prepend( "<p style='margin-left: 10px; width: 100%;'>To see each person’s email, click on the account icon.</p><p></p>" );
-
 }
 
 init()
