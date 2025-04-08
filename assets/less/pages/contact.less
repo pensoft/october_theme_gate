@@ -22,6 +22,11 @@
         max-width: 90%;
         text-align: center;
         justify-content: center;
+        .breakpoint-large-down({
+            max-width: 100%;
+        });
+
+
         .email_container{
             background: @link-color;
             border-radius: 6px;
@@ -33,6 +38,12 @@
         }
         .coordinator_image{
             display: flex;
+
+            .breakpoint-large-down({
+                justify-content: center;
+                margin-bottom: 20px;
+            });
+
             img{
                 object-fit: cover;
                 width: 146px;
