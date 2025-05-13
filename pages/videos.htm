@@ -70,7 +70,6 @@ return Response::download($pathToFile, $fileName, $headers);
 }
 ?>
 ==
-
 {% set records = mediaVideosList %}
 
 <div class="container" style="flex-direction: column;">
@@ -81,13 +80,17 @@ return Response::download($pathToFile, $fileName, $headers);
     </div>
     {% if records.count() %}
             <div class="row">
-                {% for record in records %}
-                <div class="col-md-6 col-xs-12">
+                {% for k, record in records %}
+                <div class="col-md-4 col-xs-12 mb-2">
 
                     {% if record.file %}
                     <video controls="" width="100%"><source src="{{record.file.path}}" type="video/mp4"></video>
-                    <p class="card_title">{{ record.name|length > 65 ? record.name|striptags|slice(0, 65)|replace({"&nbsp;": " ", ".": ". "}) ~ '...' : record.name|striptags|replace({"&nbsp;": " ", ".": ". "})  }}</p>
-                    <p><a class=" btn btn-primary" href="{{ ''| page }}?{{queries}}&download={{record.file.id}}&file_name={{record.name|replace({' ': '_'})}}">Download</a></p>
+                    <p class="card_title">{{record.name}}</p>
+                    <!--<p><a class=" btn btn-primary" href="{{ ''| page }}?{{queries}}&download={{record.file.id}}&file_name={{record.name|replace({' ': '_'})}}">Download</a></p>-->
+                    <p class="tooltip" align="center">
+                        <a class="btn btn-primary" href="javascript: void(0);" onclick="copyFileLink('{{record.file.path}}', {{k}});" onmouseout="outFunc({{k}});">Share</a>
+                        <span class="tooltiptext" id="copyTooltip_{{k}}">Copy link</span>
+                    </p>
                     {% endif %}
 
                     {% if record.youtube_url %}

@@ -255,7 +255,17 @@ $(document).ready(function() {
 });
 
 
+function copyFileLink(url, param){
+    navigator.clipboard.writeText(url);
+      var tooltip = document.getElementById("copyTooltip_"+param);
+      tooltip.innerHTML = "File link copied";
+      
+}
 
+function outFunc(param) {
+  var tooltip = document.getElementById("copyTooltip_"+param);
+  tooltip.innerHTML = "Copy link";
+}
 
 
 function onHashChange(){
