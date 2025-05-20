@@ -19,115 +19,198 @@ title = 1
 background = "transperant"
 templates = "template3"
 description_limit = 0
+
+[jumbotron intro]
+jumbotron = "gate-supports-capacity"
+background = "transperant"
+templates = "template3"
+description_limit = 0
+
+[jumbotron about]
+jumbotron = "about"
+title = 1
+background = "transperant"
+templates = "template3"
+description_limit = 0
+
+[jumbotron solution]
+jumbotron = "solution"
+title = 1
+background = "transperant"
+templates = "template3"
+description_limit = 0
+
+[jumbotron graphic]
+jumbotron = "gates-lifecycle"
+background = "transperant"
+templates = "template3"
+description_limit = 0
+
+[jumbotron banner]
+jumbotron = "banner"
+background = "transperant"
+templates = "template3"
+description_limit = 0
 ==
 <?php
 use Pensoft\Partners\Models\Partners as Partner;
+use Pensoft\Initiatives\Models\Initiative;
+use Pensoft\Calendar\Models\Entry;
 
 
 function onStart(){
-    $this['consortium_partners'] = Partner::get();
+    $this['consortium_partners'] = Partner::where('type', 1)->get();
+    $this['supporting_partners'] = Partner::where('type', 4)->get();
+    $this['initiatives'] = Initiative::get();
+    $this['webinars'] = Entry::where('show_on_timeline', true)->where('is_internal', false)->where('identifier', 2)->orderBy('start', 'asc')->get();
 }
 ?>
 ==
-<div class="container1400">
+<div class="container">
+
+    <div class="row home_intro">
+        <div class="col-md-12 col-xs-12">
+            {% component 'intro' %}
+        </div>
+    </div>
+
+
+    <div class="row home_about">
+        <div class="col-md-12 col-xs-12">
+        {% component 'about' %}
+        </div>
+    </div>
+
+
         <div class="row">
             <div class="col-md-6 col-xs-12">
                 <div class="vision">
                     {% component 'vision' %}
-                    <span class="read_more" href="">Read more</span>
+                    <a href="" class="btn btn-primary">Еxplore the GATE service</a>
+<!--                    <span class="read_more" href="">Read more</span>-->
                 </div>
             </div>
             <div class="col-md-6 col-xs-12">
                 <div class="mission">
                     {% component 'mission' %}
-                    <span class="read_more" href="">Read more</span>
+<!--                    <span class="read_more" href="">Read more</span>-->
                 </div>
             </div>
         </div>
     </div>
 
-<div class="container mt-4">
-    <h1 class="display-1">Who are the GATE’S stakeholders?</h1>
-</div>
+<div class="container home_solution">
+    {% component 'solution' %}
 
-
-<!-- latest from news -->
-<div class="container-fluid highlights-news">
-<!--    <div class="trigger_prev"></div>-->
-<!--    <div class="trigger_next"></div>-->
-
-    <div class="news-carousel">
-
-
-        <div class="home-news-highlights">
-            <div class="row news-item stakeholder1">
-                <div class="col-md-12 col-xs-12 news-content">
-                    <div>
-                    <div class="stakeholder-title">Open Science Trainer</div>
-                    <div class="stakeholder-description">Trainers of various Open Science actors: Researcher, University Student, Data Curator, Data Steward/Librarian, OS Educator/Trainer, Data Research ...</div>
-                    </div>
-                    <span class="read_more">{{'Read more' |_}}</span>
+    <div class="row">
+    {% for role in initiatives %}
+    {% set paragraphs = role.description|split('</p>') %}
+    {% set firstParagraph = paragraphs|first ~ '</p>' %}
+    <div class="col-md-4 col-xs-12 mb-1">
+        <div class="role-item">
+            <div class="role-content">
+                <div>
+                    <img src="{{role.logo.path}}" class="role-image">
+                    <div class="role-title">{{role.title}}</div>
+                    <div class="role-description">{{ firstParagraph|raw }}</div>
                 </div>
+                <a data-toggle="modal" href="#content{{role.id}}" class="read_more">{{'Read more' |_}}</a>
             </div>
         </div>
-
-
-        <div class="home-news-highlights">
-            <div class="row news-item stakeholder2">
-                <div class="col-md-12 col-xs-12 news-content">
-                    <div>
-                    <div class="stakeholder-title">Research Communities</div>
-                    <div class="stakeholder-description">Organisations and representatives, fostering their research community towards driving innovation and progress through trustworthy research by intersecting their community with the GATE.</div>
-                    </div>
-                    <span class="read_more">{{'Read more' |_}}</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="home-news-highlights">
-            <div class="row news-item stakeholder3">
-                <div class="col-md-12 col-xs-12 news-content">
-                    <div>
-                    <div class="stakeholder-title">Research Eco System</div>
-                    <div class="stakeholder-description">Actors of the European Research Area (ERA) and beyond who recognise the contexts, differences and interplays in the Open Science eco-system.</div>
-                    </div>
-                    <span class="read_more">{{'Read more' |_}}</span>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="home-news-highlights">
-            <div class="row news-item stakeholder4">
-                <div class="col-md-12 col-xs-12 news-content">
-                    <div>
-                    <div class="stakeholder-title">Research Corner</div>
-                    <div class="stakeholder-description">Researchers and research funders who conduct meta-research on open science by 1) answering research questions on current research practices and research education, as well as finding solutions for current challenges, 2. collecting information on Open Science policies, mechanisms and infrastructures by examining the Open Science eco-system.</div>
-                    </div>
-                    <span class="read_more">{{'Read more' |_}}</span>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="home-news-highlights">
-            <div class="row news-item stakeholder5">
-                <div class="col-md-12 col-xs-12 news-content">
-                    <div>
-                    <div class="stakeholder-title">GATE Partners</div>
-                    <div class="stakeholder-description">Current consortium that supports the non-profit initiative GATE in its build up phase financially and with a secretariat.</div>
-                    </div>
-                    <span class="read_more">{{'Read more' |_}}</span>
-                </div>
-            </div>
-        </div>
-
     </div>
-<!--    <div class="center-xs">-->
-<!--        <a class="btn btn-primary view_all" href="">View all</a>-->
-<!--    </div>-->
+
+        <div class="control-popup modal fade" id="content{{role.id}}">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <div>
+                            <img src="{{role.logo.path}}" class="role-image">
+                            <div class="role-title">{{role.title}}</div>
+                            <div class="role-description">{{ role.description|raw }}</div>
+                            <a class="btn btn-primary" href="{{role.website}}" target="_blank">Еxplore the GATE service</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% endfor %}
+    </div>
 </div>
 
+<div class="container lifecycle">
+    {% component 'graphic' %}
+    <img src="{{'lifecycle-graphic.svg'|media}}">
+    <a href="" class="read_more report">{{'Read more' |_}}</a>
+    <a href="" class="read_more service">{{'Read more' |_}}</a>
+
+</div>
+
+
+
+<div class="container">
+    <div class="row middle-xs between-xs consortium_partners">
+        <div class="col-xs-12 center-xs mb-1 mt-2"><h1 class="display-1">GATE Collaborators</h1></div>
+        <div class="col-xs-12 center-xs">
+            <div class="row">
+                {% for c in consortium_partners %}
+                <div class="col-md col-xs-12 partner_logo">
+                    <a href="{{c.instituion_url}}" target="_blank">
+                        <img alt="{{ c.instituion }}" src="{{c.cover.thumb(auto,47,{'mode':'crop'})}}"></a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    {% if webinars.count() %}
+    <!-- events timeline -->
+    <div class="timeline2 timeline--loaded timeline--horizontal" style="opacity: 1;">
+        <div class="timeline__wrap">
+            <div class="timeline__items">
+                {% for entry in webinars %}
+                {% if entry.start %}
+                <div class="timeline__item">
+                    <div class="timeline__content index_{{entry.id}}">
+                        <div class="date_and_place">
+                            {% if entry.cover_image %}
+                            <img src="{{entry.cover_image.path}}">
+                            {% endif%}
+                            <span class="event_date">{{entry.start | date('m/Y')}}</span>
+                            <span class="event_title">{{entry.title}}</span>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+
+        <span class="top_label">DEPLOYMENT &<br> ENGAGEMENT</span>
+        <span class="bottom_label">DEPLOYMENT</span>
+
+        <button class="timeline-nav-button timeline-nav-button--prev" disabled="">&nbsp;</button>
+        <button class="timeline-nav-button timeline-nav-button--next">&nbsp;</button>
+        <span class="timeline-divider" style="top: 265px;"></span></div>
+    <script type="text/javascript">
+        timeline(document.querySelectorAll('.timeline2'), {
+            forceVerticalMode: 700,
+            mode: 'horizontal',
+            verticalStartPosition: 'left',
+            visibleItems: 5,
+            startIndex: 0
+        });
+    </script>
+    {% endif %}
+</div>
+
+<div class="container home_banner">
+    {% component 'banner' %}
+</div>
 
 
 
@@ -137,7 +220,7 @@ function onStart(){
         <div class="col-xs-12 center-xs mb-1 mt-2"><h1 class="display-1">GATE Supporters</h1></div>
         <div class="col-xs-12 center-xs">
             <div class="row">
-                {% for c in consortium_partners %}
+                {% for c in supporting_partners %}
                 <div class="col-md col-xs-12 partner_logo">
                     <a href="{{c.instituion_url}}" target="_blank">
                         <img alt="{{ c.instituion }}" src="{{c.cover.thumb(auto,47,{'mode':'crop'})}}"></a>

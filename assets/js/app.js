@@ -6,6 +6,16 @@ var documentHasScroll = function() {
     return window.innerHeight <= document.body.offsetHeight;
 };
 
+window.addEventListener('scroll', function (e) {
+    var headernavbar = document.getElementById("headernavbar");
+    if (window.scrollY > headernavbar.offsetHeight){
+        var headerNavbarNav = document.querySelector('#headerNavbarNav')
+        headernavbar.classList.add('scrolled');
+    }else{
+        headernavbar.classList.remove('scrolled');
+    }
+});
+
 $(document).ready(function() {
     // $("nav").removeClass("no-transition");
 	/* MENU */
@@ -150,6 +160,8 @@ $(document).ready(function() {
 	$('.profile-item').attr('data-aos', 'flip-left');
 	$('.mission-card').attr('data-aos', 'flip-left');
 	$('.about img').attr('data-aos', 'flip-left');
+	$('.home_banner p').attr('data-aos', 'zoom-in');
+	$('.timeline__item::after').attr('data-aos', 'zoom-in');
 
 
 	$('.see_all_partners_link').hide();
@@ -259,7 +271,7 @@ function copyFileLink(url, param){
     navigator.clipboard.writeText(url);
       var tooltip = document.getElementById("copyTooltip_"+param);
       tooltip.innerHTML = "File link copied";
-      
+
 }
 
 function outFunc(param) {

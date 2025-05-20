@@ -8,23 +8,18 @@ numberOfLevels = 2
 ==
 <div class="container-fluid border-box dark-background">
     <div class="container footer_container">
-        <div class="row mb-4">
-            <div class="col-md-5 col-xs-12 start-md center-xs"><img class="project_footer_logo" src="{{ 'GATE-logo-white.svg'|media }}"></div>
-            <div class="col-md-7 com-xs-12">
+        <div class="row middle-xs mb-4">
+            <div class="col-md-3 col-xs-12 start-md center-xs"><img class="project_footer_logo" src="{{ 'GATE_logo_white.svg'|media }}"></div>
+            <div class="col-md-5 com-xs-12 footer-menu-container">
+                {% component 'footer_menu' %}
+            </div>
+            <div class="col-md-4 col-xs-12 end-md center-xs"><a href="" target="_blank" class="btn btn-primary">Engagement questionnaire</a></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-5 col-xs-12 footer_info">
                 <div class="row">
-                    <div class="col-md-3 col-xs-12 footer-menu-container">
-                        {% component 'footer_menu' %}
-                    </div>
-                    <div class="col-md-5 col-xs-12 footer_info">
-                        <span class="footer_heading">Contact</span>
-                        <div class="contact_description">
-                            Anika Müller-Karabil<br>
-                            <a href="mailto:anika.gate@miller.international">anika.gate@miller.international</a><br>
-                            Marie Alavi<br>
-                            <a href="mailto:marie.gate@miller.international">marie.gate@miller.international</a>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-xs-12 footer_info">
+                    <div class="col-md-12 col-xs-12 mb-2">
                         <span class="footer_heading">Address</span>
                         <div class="contact_description">
                             <span>MILLER INTERNATIONAL KNOWLEDGE<br>
@@ -32,9 +27,54 @@ numberOfLevels = 2
                                 28703 Madrid, Spain</span>
                         </div>
                     </div>
+                    <div class="col-md-6 col-xs-12">
+                        <span class="footer_heading">Contact</span>
+                        <div class="contact_description">
+                            Anika Müller-Karabil<br>
+                            <a href="mailto:anika.gate@miller.international">anika.gate@miller.international</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                        <span class="footer_heading">&nbsp;</span>
+                        <div class="contact_description">
+                            Marie Alavi<br>
+                            <a href="mailto:marie.gate@miller.international">marie.gate@miller.international</a>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <div class="col-md-3 col-xs-12 end-md center-xs"></div>
+            <div class="col-md-4 col-xs-12 end-md center-xs">
+                <div class="social-networks">
+                    <div class="icons">
+                        {% if enable_facebook and facebook_url %}
+                        <a href="{{facebook_url}}" target="_blank" class="pr p-secondary p-facebook normal" target="_blank"></a>
+                        {% endif %}
+                        {% if enable_twitter and twitter_url %}
+                        <a href="{{twitter_url}}" target="_blank" class="pr p-secondary p-twitter normal" target="_blank"></a>
+                        {% endif %}
+                        {% if enable_linkedin and linkedin_url %}
+                        <a  href="{{linkedin_url}}" target="_blank" class="pr p-secondary p-linkedin normal" target="_blank"></a>
+                        {% endif %}
+                        {% if enable_youtube and youtube_url %}
+                        <a  href="{{youtube_url}}" target="_blank" class="pr p-secondary p-youtube normal" target="_blank"></a>
+                        {% endif %}
+                        {% if enable_instagram and instagram_url %}
+                        <a  href="{{instagram_url}}" target="_blank" class="pr p-secondary p-instagram normal" target="_blank"></a>
+                        {% endif %}
+                        {% if this.theme.bluesky_url %}
+                        <a href="{{this.theme.bluesky_url}}" target="_blank" class="pr p-secondary p-bluesky normal"></a>
+                        {% endif %}
+                        {% if this.theme.threads_url %}
+                        <a href="{{this.theme.threads_url}}" target="_blank" class="pr p-secondary p-threads normal"></a>
+                        {% endif %}
+                    </div>
+                </div>
+
+
+            </div>
         </div>
+
         <div class="row top_border">
             <div class="col-md-6 col-xs-12 start-md center-xs">
                 <a href="#">Privacy policy</a>

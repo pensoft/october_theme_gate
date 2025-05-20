@@ -321,294 +321,294 @@ nav:not(.navbar){
 /*
     HOME NEWS HIGHLIGHT SECTION
 */
-.highlights-news{
-    position: relative;
-
-    .container:first-of-type{
-        padding-bottom: 0;
-    }
-    a:hover{
-        opacity: 0.75;
-    }
-
-
-    .news-item{
-        background: @secondary-color;
-        border-radius: 10px;
-        margin-right: 20px;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        padding: 65px 30px 30px 30px;
-        width: 455px;
-        height: 381px;
-
-
-
-        &.stakeholder1{
-            background: @secondary-color url("../../assets/images/open-science-trainer.svg") no-repeat;
-            background-size: 44px;
-            background-position: 30px 30px;
-            &:hover{
-                background: #E3F1F5 url("../../assets/images/open-science-trainer.svg") no-repeat;
-                background-size: 44px;
-                background-position: 30px 30px;
-            }
-        }
-
-        &.stakeholder2{
-            background: @secondary-color url("../../assets/images/reserach-communities.svg") no-repeat;
-            background-size: 38px;
-            background-position: 30px 30px;
-            &:hover{
-                background: #E3F1F5 url("../../assets/images/reserach-communities.svg") no-repeat;
-                background-size: 38px;
-                background-position: 30px 30px;
-            }
-        }
-
-        &.stakeholder3{
-            background: @secondary-color url("../../assets/images/reseach-eco-system.svg") no-repeat;
-            background-size: 43px;
-            background-position: 30px 30px;
-            &:hover{
-                background: #E3F1F5 url("../../assets/images/reseach-eco-system.svg") no-repeat;
-                background-size: 43px;
-                background-position: 30px 30px;
-            }
-        }
-
-        &.stakeholder4{
-            background: @secondary-color url("../../assets/images/reseach-corner.svg") no-repeat;
-            background-size: 33px;
-            background-position: 30px 30px;
-            &:hover{
-                background: #E3F1F5 url("../../assets/images/reseach-corner.svg") no-repeat;
-                background-size: 33px;
-                background-position: 30px 30px;
-            }
-        }
-
-        &.stakeholder5{
-            background: @secondary-color url("../../assets/images/GATE-partners.svg") no-repeat;
-            background-size: 53px;
-            background-position: 30px 30px;
-            &:hover{
-                background: #E3F1F5 url("../../assets/images/GATE-partners.svg") no-repeat;
-                background-size: 53px;
-                background-position: 30px 30px;
-            }
-        }
-
-        .news-content{
-            padding: 20px 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-
-            .read_more{
-                font-size: 16px;
-                letter-spacing: -0.05em;
-                text-transform: uppercase;
-
-                line-height: 1em;
-                color: @link-color;
-                cursor: pointer;
-                padding-right: 15px;
-                position: relative;
-                font-weight: 500;
-                width: fit-content;
-                &:after{
-                    position: absolute;
-                    right: 0;
-                    top: 0;
-                    width: 20px;
-                    height: 20px;
-                    content: '';
-                    transition: all 0.3s ease-in-out;
-                    background: url("../../assets/images/arrow-read-more.svg") right center no-repeat;
-                    background-size: 11px;
-
-                }
-                &:hover{
-                    padding-right: 17px;
-                    &:after{
-                        transform:rotate(45deg);
-                        top: 0;
-                    }
-                }
-            }
-        }
-
-        .stakeholder-title{
-            font-size: 22px;
-            font-weight: 400;
-            letter-spacing: -0.05em;
-            line-height: 1.3em;
-            color: black;
-            margin-bottom: 20px;
-
-        }
-
-        .stakeholder-description{
-            font-size: 16px;
-            font-weight: 300;
-            letter-spacing: -0.05em;
-            line-height: 1.3em;
-            color: #616161;
-            margin-bottom: 48px;
-
-        }
-
-        .breakpoint-large-down({
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: left;
-            margin: 0 auto;
-            max-width: 75%;
-        });
-
-
-    }
-
-
-    .trigger_prev,
-    .trigger_next{
-        position: absolute;
-        width: 250px;
-        height: 356px;
-        z-index: 999;
-        &:hover{
-            cursor: pointer;
-        }
-    }
-
-    .trigger_prev{
-        left: 0;
-        //position: absolute;
-        //width: 367px;
-        //height: 412px;
-        //z-index: 999;
-        //background: white;
-    }
-
-    .trigger_next{
-        right: 0;
-    }
-
-    /* Custom slick dots for news highlights on homepage */
-    .slick-dots {
-        text-align: center;
-        li {
-            display: inline-block;
-            margin: 0 5px;
-            button {
-                cursor: pointer;
-                border: 0;
-                background: transparent;
-                width: 20px;
-                height: 20px;
-                border-radius: 50%;
-                padding: 0;
-                color: transparent;
-                font-size: 0;
-                line-height: 0;
-
-                &:hover, &:focus {
-                    outline: none;
-                    background-color: @white-color;
-                    opacity: 1;
-                }
-
-                &:before {
-                    content: '';
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    width: 10px;
-                    height: 10px;
-                    background-color: @link-color;
-                    border-radius: 50%;
-                    transform: translate(-50%, -50%);
-                    transition: background-color .25s ease;
-                }
-            }
-
-            &.slick-active button:before {
-                background-color: @link-color;
-            }
-
-            &.slick-active button {
-                box-shadow: 0 0 0 2px @link-color;
-            }
-        }
-    }
-
-    /* slick arrows */
-    .slick-arrow {
-
-        &.slick-prev {
-            position: absolute;
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            left: unset;
-            //left: calc(~'100vw - 150px');
-            //left: calc(~'100vw - 150px');
-            top: -123px;
-            /* left: 26px; */
-            right: 222px;
-            z-index: 1;
-            border: 1px solid #DFDFDF;
-            background: url("../../assets/images/arrow-left.svg") center no-repeat;
-            color: transparent;
-            //background-size: 20px;
-            &:hover{
-                //background: @black-color url("../../assets/images/Group 15932.svg") center no-repeat;
-                //background-size: 20px;
-                //opacity: 1;
-            }
-        }
-
-        &.slick-next {
-            position: absolute;
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            top: -123px;
-            right: 148px;
-            z-index: 1;
-            background: url("../../assets/images/arrow-left.svg") center no-repeat;
-            transform: rotate(180deg);
-            border: 1px solid #DFDFDF;
-            color: transparent;
-            //background-size: 20px;
-            &:hover{
-                //background: @black-color url("../../assets/images/Group 15932.svg") center no-repeat;
-                //background-size: 20px;
-                //opacity: 1;
-            }
-
-        }
-    }
-
-    //
-    //.home-news-highlights{
-    //    width: 455px;
-    //    max-width: 90vw;
-    //}
-
-    .news-carousel{
-        position: relative;
-        padding: 20px 0 ;
-    }
-
-}
+//.highlights-news{
+//    position: relative;
+//
+//    .container:first-of-type{
+//        padding-bottom: 0;
+//    }
+//    a:hover{
+//        opacity: 0.75;
+//    }
+//
+//
+//    .news-item{
+//        background: @secondary-color;
+//        border-radius: 10px;
+//        margin-right: 20px;
+//        position: relative;
+//        display: flex;
+//        flex-direction: column;
+//        padding: 65px 30px 30px 30px;
+//        width: 455px;
+//        height: 381px;
+//
+//
+//
+//        &.stakeholder1{
+//            background: @secondary-color url("../../assets/images/open-science-trainer.svg") no-repeat;
+//            background-size: 44px;
+//            background-position: 30px 30px;
+//            &:hover{
+//                background: #E3F1F5 url("../../assets/images/open-science-trainer.svg") no-repeat;
+//                background-size: 44px;
+//                background-position: 30px 30px;
+//            }
+//        }
+//
+//        &.stakeholder2{
+//            background: @secondary-color url("../../assets/images/reserach-communities.svg") no-repeat;
+//            background-size: 38px;
+//            background-position: 30px 30px;
+//            &:hover{
+//                background: #E3F1F5 url("../../assets/images/reserach-communities.svg") no-repeat;
+//                background-size: 38px;
+//                background-position: 30px 30px;
+//            }
+//        }
+//
+//        &.stakeholder3{
+//            background: @secondary-color url("../../assets/images/reseach-eco-system.svg") no-repeat;
+//            background-size: 43px;
+//            background-position: 30px 30px;
+//            &:hover{
+//                background: #E3F1F5 url("../../assets/images/reseach-eco-system.svg") no-repeat;
+//                background-size: 43px;
+//                background-position: 30px 30px;
+//            }
+//        }
+//
+//        &.stakeholder4{
+//            background: @secondary-color url("../../assets/images/reseach-corner.svg") no-repeat;
+//            background-size: 33px;
+//            background-position: 30px 30px;
+//            &:hover{
+//                background: #E3F1F5 url("../../assets/images/reseach-corner.svg") no-repeat;
+//                background-size: 33px;
+//                background-position: 30px 30px;
+//            }
+//        }
+//
+//        &.stakeholder5{
+//            background: @secondary-color url("../../assets/images/GATE-partners.svg") no-repeat;
+//            background-size: 53px;
+//            background-position: 30px 30px;
+//            &:hover{
+//                background: #E3F1F5 url("../../assets/images/GATE-partners.svg") no-repeat;
+//                background-size: 53px;
+//                background-position: 30px 30px;
+//            }
+//        }
+//
+//        .news-content{
+//            padding: 20px 0;
+//            display: flex;
+//            flex-direction: column;
+//            justify-content: space-between;
+//
+//            .read_more{
+//                font-size: 16px;
+//                letter-spacing: -0.05em;
+//                text-transform: uppercase;
+//
+//                line-height: 1em;
+//                color: @link-color;
+//                cursor: pointer;
+//                padding-right: 15px;
+//                position: relative;
+//                font-weight: 500;
+//                width: fit-content;
+//                &:after{
+//                    position: absolute;
+//                    right: 0;
+//                    top: 0;
+//                    width: 20px;
+//                    height: 20px;
+//                    content: '';
+//                    transition: all 0.3s ease-in-out;
+//                    background: url("../../assets/images/arrow-read-more.svg") right center no-repeat;
+//                    background-size: 11px;
+//
+//                }
+//                &:hover{
+//                    padding-right: 17px;
+//                    &:after{
+//                        transform:rotate(45deg);
+//                        top: 0;
+//                    }
+//                }
+//            }
+//        }
+//
+//        .stakeholder-title{
+//            font-size: 22px;
+//            font-weight: 400;
+//            letter-spacing: -0.05em;
+//            line-height: 1.3em;
+//            color: black;
+//            margin-bottom: 20px;
+//
+//        }
+//
+//        .stakeholder-description{
+//            font-size: 16px;
+//            font-weight: 300;
+//            letter-spacing: -0.05em;
+//            line-height: 1.3em;
+//            color: #616161;
+//            margin-bottom: 48px;
+//
+//        }
+//
+//        .breakpoint-large-down({
+//            display: flex;
+//            justify-content: center;
+//            align-items: center;
+//            text-align: left;
+//            margin: 0 auto;
+//            max-width: 75%;
+//        });
+//
+//
+//    }
+//
+//
+//    .trigger_prev,
+//    .trigger_next{
+//        position: absolute;
+//        width: 250px;
+//        height: 356px;
+//        z-index: 999;
+//        &:hover{
+//            cursor: pointer;
+//        }
+//    }
+//
+//    .trigger_prev{
+//        left: 0;
+//        //position: absolute;
+//        //width: 367px;
+//        //height: 412px;
+//        //z-index: 999;
+//        //background: white;
+//    }
+//
+//    .trigger_next{
+//        right: 0;
+//    }
+//
+//    /* Custom slick dots for news highlights on homepage */
+//    .slick-dots {
+//        text-align: center;
+//        li {
+//            display: inline-block;
+//            margin: 0 5px;
+//            button {
+//                cursor: pointer;
+//                border: 0;
+//                background: transparent;
+//                width: 20px;
+//                height: 20px;
+//                border-radius: 50%;
+//                padding: 0;
+//                color: transparent;
+//                font-size: 0;
+//                line-height: 0;
+//
+//                &:hover, &:focus {
+//                    outline: none;
+//                    background-color: @white-color;
+//                    opacity: 1;
+//                }
+//
+//                &:before {
+//                    content: '';
+//                    position: absolute;
+//                    top: 50%;
+//                    left: 50%;
+//                    width: 10px;
+//                    height: 10px;
+//                    background-color: @link-color;
+//                    border-radius: 50%;
+//                    transform: translate(-50%, -50%);
+//                    transition: background-color .25s ease;
+//                }
+//            }
+//
+//            &.slick-active button:before {
+//                background-color: @link-color;
+//            }
+//
+//            &.slick-active button {
+//                box-shadow: 0 0 0 2px @link-color;
+//            }
+//        }
+//    }
+//
+//    /* slick arrows */
+//    .slick-arrow {
+//
+//        &.slick-prev {
+//            position: absolute;
+//            width: 55px;
+//            height: 55px;
+//            border-radius: 50%;
+//            display: flex;
+//            align-items: center;
+//            justify-content: center;
+//            left: unset;
+//            //left: calc(~'100vw - 150px');
+//            //left: calc(~'100vw - 150px');
+//            top: -123px;
+//            /* left: 26px; */
+//            right: 222px;
+//            z-index: 1;
+//            border: 1px solid #DFDFDF;
+//            background: url("../../assets/images/arrow-left.svg") center no-repeat;
+//            color: transparent;
+//            //background-size: 20px;
+//            &:hover{
+//                //background: @black-color url("../../assets/images/Group 15932.svg") center no-repeat;
+//                //background-size: 20px;
+//                //opacity: 1;
+//            }
+//        }
+//
+//        &.slick-next {
+//            position: absolute;
+//            width: 55px;
+//            height: 55px;
+//            border-radius: 50%;
+//            display: flex;
+//            align-items: center;
+//            justify-content: center;
+//            top: -123px;
+//            right: 148px;
+//            z-index: 1;
+//            background: url("../../assets/images/arrow-left.svg") center no-repeat;
+//            transform: rotate(180deg);
+//            border: 1px solid #DFDFDF;
+//            color: transparent;
+//            //background-size: 20px;
+//            &:hover{
+//                //background: @black-color url("../../assets/images/Group 15932.svg") center no-repeat;
+//                //background-size: 20px;
+//                //opacity: 1;
+//            }
+//
+//        }
+//    }
+//
+//    //
+//    //.home-news-highlights{
+//    //    width: 455px;
+//    //    max-width: 90vw;
+//    //}
+//
+//    .news-carousel{
+//        position: relative;
+//        padding: 20px 0 ;
+//    }
+//
+//}
 

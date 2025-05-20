@@ -1,5 +1,5 @@
 html,body {
-    font-family: @font-family, Arial, sans-serif;
+    font-family: Inter, Arial, sans-serif;
     background-color: @background-color;
     color: @text-color-default;
     font-weight: normal;
@@ -39,6 +39,7 @@ button{
 
 p{
     font-weight: 300;
+    line-height: 1.5em;
 }
 
 img{
@@ -75,13 +76,15 @@ h1, h2{
 
 h1.display-1, h2.underline{
     margin-bottom: 30px;
-    font-size: 41px;
-    font-weight: 400;
-    line-height: 47px;
-    text-align: center;
-    letter-spacing: -0.05em;
-    text-transform: uppercase;
     color: black;
+    text-align: center;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.2em; /* 48px */
+    letter-spacing: -2px;
+
+
     .breakpoint-large-down({
         font-size: 40px;
     });
@@ -169,7 +172,7 @@ ul.pagination{
     .header-image-bar {
         width: 100%;
         height: 230px;
-        margin-top: 79px;
+        //margin-top: 79px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -198,11 +201,12 @@ ul.pagination{
 
     &.home {
         .header-image-bar {
-            height: calc(~'100vh - 79px');
-            //height: 100vh;
-            margin-top: 79px;
+            //height: calc(~'100vh');
+            height: 100vh;
+            //margin-top: 79px;
             position: relative;
-            background: black;
+            background: url("../../assets/images/hero-background.png") center no-repeat;
+            background-size: cover;
             z-index: 5;
             //background: url("../../assets/images/Subtract.svg") center no-repeat;
             //background-size: cover;
@@ -248,7 +252,7 @@ ul.pagination{
                 right: 37px;
                 width: calc(~'100% - 74px');
                 height: calc(~'100% - 37px');
-                background: black;
+                background: #030a0f;
                 border-top-right-radius: 300px;
                 border-top-left-radius: 300px;
                 z-index: 6;
@@ -281,7 +285,7 @@ ul.pagination{
                     right: 38px;
                     width: calc(~'100% - 76px');
                     height: calc(~'100% - 38px');
-                    background: black;
+                    background: #030a0f;
                     border-top-right-radius: 300px;
                     border-top-left-radius: 300px;
                     z-index: 6;
@@ -289,56 +293,6 @@ ul.pagination{
                         display: none;
                     });
                 }
-
-            //background: #089A96;
-            //background: #1A74A6;
-            //background: #7626B3;
-
-
-            //
-            //background: #06726F;
-            //background: #0C70A7;
-            //background: #8133BC;
-
-
-
-            //.elipse5{
-            //    position: absolute;
-            //    width: 1291px;
-            //    height: 504px;
-            //    background: linear-gradient(-31deg, #7626B3, #8133BC);
-            //    background-size: 400% 400%;
-            //    transform: rotate(-12.28deg);
-            //    animation: gradient 15s ease infinite;
-            //    z-index: 4;
-            //    bottom: -15%;
-            //    right: -55%;
-            //
-            //}
-            //.elipse6{
-            //    position: absolute;
-            //    width: 739px;
-            //    height: 336px;
-            //    background: linear-gradient(-31deg, #1A74A6, #1A74A6);
-            //    background-size: 400% 400%;
-            //    transform: rotate(145.51deg);
-            //    animation: gradient 15s ease infinite;
-            //    bottom: 0;
-            //    right: -30%;
-            //    z-index: 4;
-            //}
-            //.elipse7{
-            //    position: absolute;
-            //    width: 739px;
-            //    height: 336px;
-            //    background: linear-gradient(-31deg, #089A96, #06726F);
-            //    background-size: 400% 400%;
-            //    transform: rotate(-146.99deg);
-            //    animation: gradient 15s ease infinite;
-            //    top: 0;
-            //    left: 10%;
-            //    z-index: 4;
-            //}
         }
         h1 {
             &.underline {
@@ -365,23 +319,28 @@ ul.pagination{
                 font-weight: 400;
                 color: @footer-text-color;
                 letter-spacing: -0.05em;
-                line-height: 1.2em;
+                //line-height: 1.2em;
+                line-height: normal;
                 .breakpoint-large-down({
                     font-size: 37px;
                 });
 
-                span{
-                    color: @link-color;
-                }
+                //span{
+                //    color: @link-color;
+                //}
             }
 
             .welcome{
-                text-transform: uppercase;
-                color: #BABABA;
-                font-size: 18px;
-                font-weight: 400;
                 text-align: left;
                 width: 100%;
+                color: #06726F;
+                font-size: 34px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+                letter-spacing: -1.7px;
+                text-transform: uppercase;
+                margin-bottom: 18px;
             }
 
             .intro_btn{
@@ -406,8 +365,98 @@ ul.pagination{
                 }
             }
 
+
             p{
                 color: @white-color;
+            }
+
+
+            .home_video{
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 19.2px;
+                vertical-align: middle;
+                display: flex;
+                align-items: center;
+                margin-top: 50px;
+                width: 100%;
+
+                a{
+                    color: white;
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 19.2px; /* 120% */
+                    letter-spacing: -0.48px;
+                }
+
+                @buttonbg: rgba(255, 255, 255, 0.19);
+                @buttonshadow: rgba(255, 255, 255, 0.19);
+
+                .pulse {
+                    position: relative;
+                    margin-right: 20px;
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    font-size: 12px;
+                    color: white;
+                    background: @buttonbg;
+                    animation: 1.6s playShadow ease-out infinite;
+                    cursor: pointer;
+                    text-decoration: none;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    span {
+                        background: url("../../assets/images/play-button.svg") center no-repeat;
+                        background-size: contain;
+                        width: 12px;
+                        height: 12px;
+                        margin-left: 2px;
+                    }
+
+                    &:after {
+                        content:'';
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        border-radius:50%;
+                        z-index:-1;
+                        pointer-events:none;
+                        transition:.35s;
+                    }
+
+                    &:hover {
+
+                        &:after {
+                            box-shadow: 0 0 0 2px fade(@buttonshadow, 30%), 0 0 0 4px fade(@buttonshadow, 20%);
+                        }
+                    }
+                }
+
+                @keyframes playShadow {
+                    0% {
+                        box-shadow: 0 0 0 0px fade(@buttonshadow, 30%), 0 0 0 0px fade(@buttonshadow, 20%);
+                        transform: scale(1);
+                    }
+                    18% {
+                        box-shadow: 0 0 0 0px fade(@buttonshadow, 30%), 0 0 0 0px fade(@buttonshadow, 20%);
+                    }
+                    35% {
+                        transform: scale(1.08);
+                    }
+                    76% {
+                        transform: scale(0.96);
+                    }
+                    100% {
+                        box-shadow: 0 0 0 8px fade(@buttonshadow, 0), 0 0 0 13px fade(@buttonshadow, 0);
+                        transform: scale(1);
+                    }
+                }
             }
         }
     }
@@ -480,6 +529,25 @@ ul.pagination{
     position: relative;
     color: white;
     z-index: 2;
+
+    .btn-primary{
+        min-width: fit-content;
+        padding-left: 20px;
+        padding-right: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        float: right;
+        &:hover{
+                border: 1px solid white;
+        }
+
+        .breakpoint-large-down({
+            float: none;
+            margin:  0 auto;
+        });
+    }
 
     .container-fluid {
         &.dark-background {
@@ -554,24 +622,40 @@ ul.pagination{
             padding: 0;
             margin: 0;
             list-style-type: none;
+            display: inline-flex;
             li{
+                width: fit-content;
                 a{
-                    color: white;
-                    padding: 5px 0;
-                    line-height: 2em;
+                    color: #FFF;
+                    text-align: center;
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: normal;
+                    letter-spacing: -0.48px;
+                    padding: 0 12px;
+
                 }
 
                 .breakpoint-large-down({
                     text-align: center;
+                    padding: 10px;
                 });
             }
+
+            .breakpoint-large-down({
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                margin: 0 auto;
+            });
 
         }
 
         .breakpoint-large-down({
             text-align: center;
-            margin-top: 40px;
-            margin-bottom: 40px;
+            margin: 40px auto;
         });
     }
 
@@ -636,56 +720,15 @@ ul.pagination{
         justify-content: space-between;
     }
 
-    .links, .outputs, .social-networks{
-        display: flex;
-        flex-direction: column;
-        justify-content: start;
-        text-align: left;
-        align-items: flex-start;
-        text-transform: uppercase;
-        font-size: 18px;
-        font-weight: 600;
-        margin: 40px 0;
-        .breakpoint-large-down({
-            display: block;
-            align-items: center;
-            margin: 40px auto;
-        });
-
-        .nav{
-            list-style-type: none;
-            padding: 0;
-            margin: 15px 0;
-            .breakpoint-large-down({
-                text-align: center;
-                margin: 15px auto;
-            });
-            a{
-                font-size: 16px;
-                color: white;
-                font-weight: 100;
-                &:hover{
-                    opacity: 0.5;
-                }
-            }
-        }
-    }
-
-    .links{
-        ul{
-            columns: 2;
-            -webkit-columns: 2;
-            -moz-columns: 2;
-            .breakpoint-large-down({
-                columns: 1;
-                -webkit-columns: 1;
-                -moz-columns: 1;
-                text-align: center;
-            });
-        }
-    }
-
     .social-networks{
+        display: flex;
+        justify-content: end;
+        align-items: flex-end;
+        height: 100%;
+
+        .breakpoint-large-down({
+            justify-content: center;
+        });
         .icons{
             align-items: center;
             margin-top: 15px;
@@ -695,24 +738,17 @@ ul.pagination{
             });
 
             a{
-                width: 28px;
-                height: 28px;
+                width: 35px;
+                height: 34px;
                 color: white;
-                border-radius: 50%;
-                background: @link-color;
-                font-size: 1em!important;
+                border-radius: 5px;
+                border: 1px solid rgba(255, 255, 255, 0.12);
+                font-size: 1.5em !important;
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 &:hover{
                     opacity: 0.5;
-                }
-                &.p-web{
-                    background: @link-color url("../../assets/images/globe-2-svgrepo-com.svg") center no-repeat;
-                    background-size: 50%;
-                }
-                &.p-twitter{
-                    font-size: 0.9em!important;
                 }
             }
         }
@@ -721,6 +757,7 @@ ul.pagination{
             color: white;
             font-size: 16px;
             font-weight: 100;
+            margin-top: 0px!important;
             &:hover{
                 opacity: 0.5;
             }
