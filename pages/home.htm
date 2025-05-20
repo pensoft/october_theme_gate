@@ -126,13 +126,15 @@ function onStart(){
                             <img src="{{role.logo.path}}" class="role-image">
                             <div class="role-title">{{role.title}}</div>
                             <div class="role-description">{{ role.description|raw }}</div>
-                            {% set value = role.category_id %}
-                            {% if value == '1' %}
-                            <a class="btn btn-primary" href="{{role.website}}" target="_blank">Click the GATE Service and intersect with the GATE</a>
-                            {% elseif value == '2' %}
-                            <a class="btn btn-primary" href="{{role.website}}" target="_blank">Contact GATE’s research coordinator Julia Priess Buchheit</a>
-                            {% elseif value == '3' %}
-                            <a class="btn btn-primary" href="{{role.website}}" target="_blank">Click the GATE Engagement questionnaire and name your specific wishes</a>
+                            {% if role.website %}
+                                {% set value = role.category_id %}
+                                {% if value == '1' %}
+                                <a class="btn btn-primary" href="{{role.website}}" target="_blank">Click the GATE Service and intersect with the GATE</a>
+                                {% elseif value == '2' %}
+                                <a class="btn btn-primary" href="{{role.website}}" target="_blank">Contact GATE’s research coordinator Julia Priess Buchheit</a>
+                                {% elseif value == '3' %}
+                                <a class="btn btn-primary" href="{{role.website}}" target="_blank">Click the GATE Engagement questionnaire and name your specific wishes</a>
+                                {% endif %}
                             {% endif %}
                         </div>
                     </div>
