@@ -126,17 +126,7 @@ function onStart(){
                             <img src="{{role.logo.path}}" class="role-image">
                             <div class="role-title">{{role.title}}</div>
                             <div class="role-description">{{ role.description|raw }}</div>
-                            {% set value = role.category_id %}
-                            {% switch value %}
-                                {% case 1 %}
-                                <a class="btn btn-primary" href="{{role.website}}" target="_blank">Click the GATE Service and intersect with the GATE</a>
-                                {% case 2 %}
-                                <a class="btn btn-primary" href="{{role.website}}" target="_blank">Click the GATE Engagement questionnaire and name your specific wishes</a>
-                                {% case 3 %}
-                                <a class="btn btn-primary" href="{{role.website}}" target="_blank">Contact GATE’s research coordinator Julia Priess Buchheit</a>
-                                {% default %}
-                                <a class="btn btn-primary" href="{{role.website}}" target="_blank">Click the GATE Service and intersect with the GATE</a>
-                            {% endswitch %}
+                            <a class="btn btn-primary" href="{{role.website}}" target="_blank">Еxplore the GATE service</a>
                         </div>
                     </div>
                 </div>
