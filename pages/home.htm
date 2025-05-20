@@ -86,14 +86,12 @@ function onStart(){
             <div class="col-md-6 col-xs-12">
                 <div class="vision">
                     {% component 'vision' %}
-                    <a href="" class="btn btn-primary">Еxplore the GATE service</a>
-<!--                    <span class="read_more" href="">Read more</span>-->
+<!--                    <a href="" class="btn btn-primary">Еxplore the GATE service</a>-->
                 </div>
             </div>
             <div class="col-md-6 col-xs-12">
                 <div class="mission">
                     {% component 'mission' %}
-<!--                    <span class="read_more" href="">Read more</span>-->
                 </div>
             </div>
         </div>
@@ -128,7 +126,17 @@ function onStart(){
                             <img src="{{role.logo.path}}" class="role-image">
                             <div class="role-title">{{role.title}}</div>
                             <div class="role-description">{{ role.description|raw }}</div>
-                            <a class="btn btn-primary" href="{{role.website}}" target="_blank">Еxplore the GATE service</a>
+                            {% set value = role.category_id %}
+                            {% switch value %}
+                                {% case 1 %}
+                                <a class="btn btn-primary" href="{{role.website}}" target="_blank">Click the GATE Service and intersect with the GATE</a>
+                                {% case 2 %}
+                                <a class="btn btn-primary" href="{{role.website}}" target="_blank">Click the GATE Engagement questionnaire and name your specific wishes</a>
+                                {% case 3 %}
+                                <a class="btn btn-primary" href="{{role.website}}" target="_blank">Contact GATE’s research coordinator Julia Priess Buchheit</a>
+                                {% default %}
+                                <a class="btn btn-primary" href="{{role.website}}" target="_blank">Click the GATE Service and intersect with the GATE</a>
+                            {% endswitch %}
                         </div>
                     </div>
                 </div>
