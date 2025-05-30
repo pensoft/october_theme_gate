@@ -1,0 +1,34 @@
+url = "/gate-report"
+layout = "default"
+title = "Gate report"
+
+[siteSearchInclude]
+
+[jumbotron]
+jumbotron = "gate-report"
+title = 0
+background = "transperant"
+templates = "template3"
+description_limit = 0
+
+[jumbotron jumbotron2]
+jumbotron = "register"
+background = "transperant"
+templates = "template3"
+description_limit = 0
+==
+{% component 'siteSearchInclude' %}
+
+<div class="container">
+    <h1 class="display-1">GATE Report</h1>
+    <div class="row">
+        <div class="col-md-7 col-xs-12">
+            {% component 'jumbotron' %}
+        </div>
+        <div class="col-md-5 col-xs-12 end-md center-xs">
+            <div class="register_report">
+                {% component 'jumbotron2' %}
+            </div>
+        </div>
+    </div>
+</div>
