@@ -12,7 +12,7 @@
             <div class="news-container col-xs-12">
                 <div class="text-published">{{record.published_at|date("j M Y")}}</div>
                 <div class="news-title">
-                    <a href="{{'news'|page}}/{{record.slug}}"><h3 class="card-title">{{ record.title|length > 60 ? record.title|striptags|slice(0, 60)|replace({"&nbsp;": " ", ".": ". "}) ~ '...' : record.title|striptags|replace({"&nbsp;": " ", ".": ". "})  }}</h3></a>
+                    <a href="{{'news'|page}}/{{record.slug}}"><h3 class="card-title">{{ record.title|length > 65 ? record.title|striptags|slice(0, 65)|replace({"&nbsp;": " ", ".": ". "}) ~ '...' : record.title|striptags|replace({"&nbsp;": " ", ".": ". "})  }}</h3></a>
                 </div>
                 <div class="row read-more-row">
                     <a class="read_more" href="{{'news'|page}}/{{record.slug}}">{{'Read more' |_}}</a>
