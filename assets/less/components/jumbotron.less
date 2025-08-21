@@ -562,9 +562,25 @@
         });
     }
 
+    .modal-dialog{
+        .breakpoint-large-down({
+            margin: 12vh 10px;
+        });
+    }
+
     .modal-content{
         padding: 67px 40px;
         border-radius: 20px;
+
+        .breakpoint-large-down({
+            padding: 47px 20px;
+        });
+
+        .modal-body{
+            .breakpoint-large-down({
+                padding: 0;
+            });
+        }
 
         .close{
             color: #B4B4B4;
@@ -572,6 +588,10 @@
             font-size: 39px;
             top: -57px;
             right: -20px;
+            .breakpoint-large-down({
+                top: -47px;
+                right: -10px;
+            });
         }
 
         .role-image{
@@ -650,6 +670,9 @@
             line-height: normal;
             letter-spacing: -0.45px;
             white-space: nowrap;
+            .breakpoint-large-down({
+                font-size: 13px;
+            });
         }
     }
 
@@ -712,16 +735,20 @@
             left: 17%;
             .breakpoint-large-down({
                 bottom: 0;
-                top: 80%;
+                top: 68%;
                 left: 0;
+                font-size: 0.8em;
+                height: 1em;
             });
         }
         &.service{
             right: 19.5%;
             .breakpoint-large-down({
                 bottom: 0;
-                top: 80%;
                 right: 0;
+                top: 68%;
+                font-size: 0.8em;
+                height: 1em;
             });
         }
     }
@@ -947,6 +974,11 @@
         padding: 56px 150px 34px 150px;
         max-width: calc(~'100% - 300px');
         margin-top: 50px;
+
+        .breakpoint-large-down({
+            padding: 56px 50px 34px 50px;
+            max-width: calc(~'100% - 100px');
+        });
 
         .container{
             padding: 0;
