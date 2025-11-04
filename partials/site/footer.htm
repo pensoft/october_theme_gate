@@ -6,84 +6,181 @@ primaryClasses = "nav nav-pills"
 secondaryClasses = "dropdown-menu"
 numberOfLevels = 2
 ==
-<div class="container-fluid border-box dark-background">
-    <div class="container footer_container">
-        <div class="row middle-xs mb-4">
-            <div class="col-md-3 col-xs-12 start-md center-xs"><img class="project_footer_logo" src="{{ 'GATE_logo_white.svg'|media }}"></div>
-            <div class="col-md-5 com-xs-12 footer-menu-container">
-                {% component 'footer_menu' %}
-            </div>
-            <div class="col-md-4 col-xs-12 end-md center-xs"><a href="https://mik2024.limesurvey.net/853888?lang=en" target="_blank" class="btn btn-primary">Share your needs</a></div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-5 col-xs-12 footer_info">
-                <div class="row">
-                    <div class="col-md-12 col-xs-12 mb-2">
-                        <span class="footer_heading">Address</span>
-                        <div class="contact_description">
-                            <span>MILLER INTERNATIONAL KNOWLEDGE<br>
-                            Calle Fuerteventura 4<br>
-                                28703 Madrid, Spain</span>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-xs-12">
-                        <span class="footer_heading"><a href="/contact">Contact</a></span>
-                        <div class="contact_description">
-                            Anika Müller-Karabil<br>
-                            <a href="mailto:anika.gate@miller.international">anika.gate@miller.international</a>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-xs-12">
-                        <span class="footer_heading">&nbsp;</span>
-                        <div class="contact_description">
-                            Marie Alavi<br>
-                            <a href="mailto:marie.gate@miller.international">marie.gate@miller.international</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-xs-12 end-md center-xs"></div>
-            <div class="col-md-4 col-xs-12 end-md center-xs">
-                <div class="social-networks">
-                    <div class="icons">
-                        {% if enable_facebook and facebook_url %}
-                        <a href="{{facebook_url}}" target="_blank" class="pr p-secondary p-facebook normal" target="_blank"></a>
-                        {% endif %}
-                        {% if enable_twitter and twitter_url %}
-                        <a href="{{twitter_url}}" target="_blank" class="pr p-secondary p-twitter normal" target="_blank"></a>
-                        {% endif %}
-                        {% if enable_linkedin and linkedin_url %}
-                        <a  href="{{linkedin_url}}" target="_blank" class="pr p-secondary p-linkedin normal" target="_blank"></a>
-                        {% endif %}
-                        {% if enable_youtube and youtube_url %}
-                        <a  href="{{youtube_url}}" target="_blank" class="pr p-secondary p-youtube normal" target="_blank"></a>
-                        {% endif %}
-                        {% if enable_instagram and instagram_url %}
-                        <a  href="{{instagram_url}}" target="_blank" class="pr p-secondary p-instagram normal" target="_blank"></a>
-                        {% endif %}
-                        {% if this.theme.bluesky_url %}
-                        <a href="{{this.theme.bluesky_url}}" target="_blank" class="pr p-secondary p-bluesky normal"></a>
-                        {% endif %}
-                        {% if this.theme.threads_url %}
-                        <a href="{{this.theme.threads_url}}" target="_blank" class="pr p-secondary p-threads normal"></a>
-                        {% endif %}
-                    </div>
+<footer>
+    <div class="container-fluid border-box dark-background">
+        <div class="container footer_container">
+            <div class="row middle-xs mb-4">
+                <div class="col-md-3 col-xs-12 start-md center-xs">
+                    <img class="project_footer_logo"
+                         src="{{ 'GATE_logo_white.svg'|media }}"
+                         alt="Open Science Learning GATE logo">
                 </div>
 
+                <nav class="col-md-5 com-xs-12 footer-menu-container" aria-labelledby="footer-menu-heading">
+                    <h2 id="footer-menu-heading" class="sr-only">Footer Menu</h2>
+                    {% component 'footer_menu' %}
+                </nav>
 
+                <div class="col-md-4 col-xs-12 end-md center-xs">
+                    <a href="https://mik2024.limesurvey.net/853888?lang=en"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="btn btn-primary"
+                       aria-label="Share your needs (opens in new window)">
+                        Share your needs
+                    </a>
+                </div>
             </div>
-        </div>
 
-        <div class="row top_border">
-            <div class="col-md-6 col-xs-12 start-md center-xs">
-                <a href="#">Privacy policy</a>
+            <div class="row">
+                <section class="col-md-5 col-xs-12 footer_info" aria-labelledby="contact-info-heading">
+                    <h2 id="contact-info-heading" class="sr-only">Contact Information</h2>
+                    <div class="row">
+                        <div class="col-md-12 col-xs-12 mb-2">
+                            <h3 class="footer_heading">Address</h3>
+                            <address class="contact_description">
+                                MILLER INTERNATIONAL KNOWLEDGE<br>
+                                Calle Fuerteventura 4<br>
+                                28703 Madrid, Spain
+                            </address>
+                        </div>
+
+                        <div class="col-md-6 col-xs-12">
+                            <h3 class="footer_heading">
+                                <a href="/contact">Contact</a>
+                            </h3>
+                            <div class="contact_description">
+                                <p>
+                                    Anika Müller-Karabil<br>
+                                    <a href="mailto:anika.gate@miller.international"
+                                       aria-label="Email Anika Müller-Karabil">
+                                        anika.gate@miller.international
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-xs-12">
+                            &nbsp;
+                            <h3 class="footer_heading sr-only">Contact Person 2</h3>
+                            <div class="contact_description">
+                                <p>
+                                    Marie Alavi<br>
+                                    <a href="mailto:marie.gate@miller.international"
+                                       aria-label="Email Marie Alavi">
+                                        marie.gate@miller.international
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="col-md-3 col-xs-12 end-md center-xs"></div>
+
+                <section class="col-md-4 col-xs-12 end-md center-xs" aria-labelledby="social-heading">
+                    <h2 id="social-heading" class="sr-only">Follow Us</h2>
+                    <nav class="social-networks" aria-label="Social media links">
+                        <ul class="icons">
+                            {% if enable_facebook and facebook_url %}
+                            <li>
+                                <a href="{{facebook_url}}"
+                                   target="_blank"
+                                   rel="noopener noreferrer"
+                                   class="pr p-secondary p-facebook normal"
+                                   aria-label="Follow us on Facebook (opens in new window)">
+                                    <span class="sr-only">Facebook</span>
+                                </a>
+                            </li>
+                            {% endif %}
+                            {% if enable_twitter and twitter_url %}
+                            <li>
+                                <a href="{{twitter_url}}"
+                                   target="_blank"
+                                   rel="noopener noreferrer"
+                                   class="pr p-secondary p-twitter normal"
+                                   aria-label="Follow us on Twitter (opens in new window)">
+                                    <span class="sr-only">Twitter</span>
+                                </a>
+                            </li>
+                            {% endif %}
+                            {% if enable_linkedin and linkedin_url %}
+                            <li>
+                                <a href="{{linkedin_url}}"
+                                   target="_blank"
+                                   rel="noopener noreferrer"
+                                   class="pr p-secondary p-linkedin normal"
+                                   aria-label="Follow us on LinkedIn (opens in new window)">
+                                    <span class="sr-only">LinkedIn</span>
+                                </a>
+                            </li>
+                            {% endif %}
+                            {% if enable_youtube and youtube_url %}
+                            <li>
+                                <a href="{{youtube_url}}"
+                                   target="_blank"
+                                   rel="noopener noreferrer"
+                                   class="pr p-secondary p-youtube normal"
+                                   aria-label="Follow us on YouTube (opens in new window)">
+                                    <span class="sr-only">YouTube</span>
+                                </a>
+                            </li>
+                            {% endif %}
+                            {% if enable_instagram and instagram_url %}
+                            <li>
+                                <a href="{{instagram_url}}"
+                                   target="_blank"
+                                   rel="noopener noreferrer"
+                                   class="pr p-secondary p-instagram normal"
+                                   aria-label="Follow us on Instagram (opens in new window)">
+                                    <span class="sr-only">Instagram</span>
+                                </a>
+                            </li>
+                            {% endif %}
+                            {% if this.theme.bluesky_url %}
+                            <li>
+                                <a href="{{this.theme.bluesky_url}}"
+                                   target="_blank"
+                                   rel="noopener noreferrer"
+                                   class="pr p-secondary p-bluesky normal"
+                                   aria-label="Follow us on Bluesky (opens in new window)">
+                                    <span class="sr-only">Bluesky</span>
+                                </a>
+                            </li>
+                            {% endif %}
+                            {% if this.theme.threads_url %}
+                            <li>
+                                <a href="{{this.theme.threads_url}}"
+                                   target="_blank"
+                                   rel="noopener noreferrer"
+                                   class="pr p-secondary p-threads normal"
+                                   aria-label="Follow us on Threads (opens in new window)">
+                                    <span class="sr-only">Threads</span>
+                                </a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                </section>
             </div>
-            <div class="col-md-6 col-xs-12 end-md center-xs powered-by">
-                <span>Designed and powered by <a href="https://pensoft.net/" target="_blank">
-                    <img class="pensoft_logo" src="{{ 'assets/images/pensoft-logo.svg'|theme }}" /></a>
-                </span>
+
+            <div class="row top_border">
+                <nav class="col-md-6 col-xs-12 start-md center-xs" aria-label="Legal links">
+                    <a href="{{'privacy-policy'|page}}">Privacy policy</a>
+                </nav>
+                <div class="col-md-6 col-xs-12 end-md center-xs powered-by">
+                    <p>Designed and powered by
+                        <a href="https://pensoft.net/"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           aria-label="Pensoft (opens in new window)">
+                            <img class="pensoft_logo"
+                                 src="{{ 'assets/images/pensoft-logo.svg'|theme }}"
+                                 alt="Pensoft" />
+                        </a>
+                    </p>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</footer>

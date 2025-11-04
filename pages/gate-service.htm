@@ -12,33 +12,33 @@ templates = "template3"
 description_limit = 0
 ==
 {% component 'siteSearchInclude' %}
-<div class="container">
+<section aria-labelledby="gate-service-heading">
+    <div class="container">
+        <h1 id="gate-service-heading" class="display-1">GATE Service</h1>
 
-    <h1 class="display-1">GATE Service</h1>
+        <div class="row between-md around-xs">
+            <div class="col-md-8 col-xs-12">
+                {% component 'jumbotron' %}
 
-    <div class="row between-md around-xs">
-        <div class="col-md-8 col-xs-12">
-            {% component 'jumbotron' %}
-
-            <a href="https://mik2024.limesurvey.net/586981?lang=en" target="_blank" class="btn btn-primary" style="
-    width: fit-content;">
-                Click the GATE Service and intersect with the GATE
-            </a>
-
-
-        </div>
-        <div class="col-md-4 col-xs-12 end-md center-xs">
-            <div class="pink_circle">
-                Intersects & collects Open Science material
+                <a href="https://mik2024.limesurvey.net/586981?lang=en"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="btn btn-primary"
+                   style="width: fit-content;"
+                   aria-label="Click the GATE Service and intersect with the GATE (opens in new window)">
+                    Click the GATE Service and intersect with the GATE
+                </a>
             </div>
 
-            <div class="green_circle">
-                Supports targeted Open Science capacity building
-            </div>
+            <aside class="col-md-4 col-xs-12 end-md center-xs" aria-label="Key benefits">
+                <div class="pink_circle">
+                    Intersects & collects Open Science material
+                </div>
 
+                <div class="green_circle">
+                    Supports targeted Open Science capacity building
+                </div>
+            </aside>
         </div>
     </div>
-
-
-
-</div>
+</section>

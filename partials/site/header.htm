@@ -12,61 +12,60 @@ background = "transperant"
 templates = "template1"
 description_limit = 0
 ==
-<nav class="pr-1 pl-1 navbar fixed" id="headernavbar">
-    <div id="menuToggle">
-        <input type="checkbox" />
-        <span></span>
-        <span></span>
-        <span></span>
+<nav class="pr-1 pl-1 navbar fixed" id="headernavbar" aria-label="Main navigation">
+    <button
+        id="menuToggle"
+        class="mobile-menu-toggle"
+        aria-expanded="false"
+        aria-controls="mobileMenu"
+        aria-label="Toggle navigation menu">
+        <span class="sr-only">Menu</span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+    </button>
+
+    <div id="mobileMenu" class="mobile-menu" hidden>
         {% component 'menu' %}
     </div>
-    <a href="{{'home'|page}}" class="navbar-brand" style="background: url('{{ this.theme.site_logo.getPath() }}') center no-repeat; background-size: contain;">
 
+    <a href="{{'home'|page}}" class="navbar-brand" style="background: url('{{ this.theme.site_logo.getPath() }}') center no-repeat; background-size: contain;" aria-label="Open Science Learning GATE home">
+        <span class="sr-only">Open Science Learning GATE</span>
     </a>
 
-    <div class="navbar-collapse collapse center-xs" id="headerNavbarNav" style="display: none;">
+    <div class="navbar-collapse collapse center-xs" id="headerNavbarNav">
         {% component 'menu' %}
-
     </div>
-<!--    <div class="search-and-social-media hidden-xs">-->
-<!--        <ul class="navbar-nav">-->
-<!--            <li class="nav-item social">-->
-<!--                <a class="pr middle search-btn" onclick="showSearchForm();"></a>-->
-<!--            </li>-->
-<!--        </ul>-->
-<!--    </div>-->
-<!--    <div id="search" class="search" style="display: none;">-->
-<!--        <div class="container">-->
-<!--            <div class="close-search" onclick="hideSearchForm();">&#10006;</div>-->
-<!--            <form class="input-group align-items-start" action="{{ url('search')}}" method="get">-->
-<!--                <input class="form-control search_input" style="color: #000;" name="q" type="text" autocomplete="on" placeholder="Search">-->
-<!--                <button class="btn btn-link pr p-search big text-grey-search-btn" type="submit"></button>-->
-<!--            </form>-->
-<!--        </div>-->
-<!--    </div>-->
-
 </nav>
-
 
 {% if this.theme.header_image and page_id != 'search' %}
 <div class="header-image {{page_id}}">
     {% if page_id != 'search' %}
     {% if page_id == 'home' %}
-    <div class="header-image-bar">
+    <section class="header-image-bar" aria-labelledby="hero-heading">
         <div class="container">
             <div class="intro">
-                <span class="welcome">Open Science Learning GATE</span>
-                <h1>{{tag_line|raw}}</h1>
+                <p class="welcome">Open Science Learning GATE</p>
+                <h1 id="hero-heading">{{tag_line|raw}}</h1>
                 <div class="home_video">
-                    <a href="https://www.youtube.com/watch?v=6UnM7Mf5wtA" class="pulse" target="_blank"><span></span></a>
-                    <a href="https://www.youtube.com/watch?v=6UnM7Mf5wtA" target="_blank">Introductory Video</a>
+                    <a href="https://www.youtube.com/watch?v=6UnM7Mf5wtA"
+                       class="pulse"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       aria-label="Watch introductory video on YouTube (opens in new window)">
+                        <span aria-hidden="true"></span>
+                    </a>
+                    <a href="https://www.youtube.com/watch?v=6UnM7Mf5wtA"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       aria-label="Watch introductory video on YouTube (opens in new window)">
+                        Introductory Video
+                    </a>
                 </div>
-
-<!--                <div class="intro_btn"><a href="https://teal-telescope-39e.notion.site/Open-Science-Learning-GATE-Working-Space-1b32c036cb0480b39ce4d4b742a69906" target="_blank" class="read_more">Learn more</a> </div>-->
             </div>
         </div>
 
-        <div class="oval_top">
+        <div class="oval_top" aria-hidden="true">
             <div class="elipse5"></div>
             <div class="elipse6"></div>
             <div class="elipse7"></div>
@@ -76,12 +75,8 @@ description_limit = 0
                 </div>
             </div>
         </div>
-
-
-    </div>
-
+    </section>
     {%endif%}
     {%endif%}
-
 </div>
 {% endif %}

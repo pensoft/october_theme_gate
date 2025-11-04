@@ -635,6 +635,7 @@ ul.pagination{
             display: inline-flex;
             li{
                 width: fit-content;
+                margin: 0;
                 a{
                     color: #FFF;
                     text-align: center;
@@ -673,6 +674,7 @@ ul.pagination{
         font-weight: 400;
         font-size: 16px;
         letter-spacing: -0.03em;
+        color: white;
 
         a{
             color: white;
@@ -687,6 +689,7 @@ ul.pagination{
         letter-spacing: -0.03em;
         line-height: 1.5em;
         margin-top: 15px;
+        color: @footer-text-color;
         a, span{
             color: @footer-text-color;
         }
@@ -1017,6 +1020,20 @@ footer .align-items-center{
         }
 
     }
+}
+
+
+/* Screen reader only text - visually hidden but accessible to screen readers */
+.sr-only {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
 }
 
 

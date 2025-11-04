@@ -17,54 +17,74 @@ function onStart(){
 ?>
 ==
 {% component 'siteSearchInclude' %}
-<div class="container width100">
-    <div class="row mb-4">
-        <div class="col-xs-12">
-            <h1 class="display-1">Contact</h1>
-        </div>
-    </div>
-    <div class="row ">
-        {% for profile in profiles %}
-        <div class="col-md-6 col-xs-12 profile-item">
-            <div class="row contact_info">
-                <div class="col-md-4 col-xs-12">
-                    <div class="coordinator_image">
-                        <img src="{{profile.avatar.thumb(146, 146, {'mode' : 'crop' })}}">
-                    </div>
-                </div>
-                <div class="col-md-8 col-xs-12">
-                    <div class="coordinator_info">
-                        <div>
-                            <h3>{{profile.names}}</h3>
-                            {% if profile.position %} {{profile.position}} {% endif %}
-                        </div>
-                        <div>
-                            {% if profile.email %}
-                            <a href="mailto:{{profile.email}}" target="_blank" class="btn btn-primary mail">
-                                <i></i>{{profile.email}}
-                            </a>
-                            {% endif %}
-
-                            {% if profile.linkedin_url %}
-                            <a href="{{profile.linkedin_url}}" target="_blank" class="btn btn-primary orcid">
-                                <i></i> ORCID Profile
-                            </a>
-                            {% endif %}
-
-                        </div>
-                    </div>
-                </div>
-                {% if profile.content %}
-                <div class="col-xs-12 description_container">
-                    <span class="read_more" href="javascript: void(0);" onclick="expandBiography(this);">Biography</span>
-                    <div class="description" style="display: none;">
-                        {{profile.content|raw}}
-                    </div>
-                </div>
-                {% endif %}
+<section aria-labelledby="contact-heading">
+    <div class="container width100">
+        <div class="row mb-4">
+            <div class="col-xs-12">
+                <h1 id="contact-heading" class="display-1">Contact</h1>
             </div>
         </div>
-        {% endfor %}
-    </div>
+        <div class="row">
+            {% for profile in profiles %}
+            <article class="col-md-6 col-xs-12 profile-item">
+                <div class="row contact_info">
+                    <div class="col-md-4 col-xs-12">
+                        <div class="coordinator_image">
+                            <img src="{{profile.avatar.thumb(146, 146, {'mode' : 'crop' })}}"
+                                 alt="{{profile.names}}">
+                        </div>
+                    </div>
+                    <div class="col-md-8 col-xs-12">
+                        <div class="coordinator_info">
+                            <div>
+                                <h2>{{profile.names}}</h2>
+                                {% if profile.position %}
+                                <p class="position">{{profile.position}}</p>
+                                {% endif %}
+                            </div>
+                            <div>
+                                {% if profile.email %}
+                                <a href="mailto:{{profile.email}}"
+                                   class="btn btn-primary mail"
+                                   aria-label="Email {{profile.names}}">
+                                    <i aria-hidden="true"></i>{{profile.email}}
+                                </a>
+                                {% endif %}
 
-</div>
+                                {% if profile.linkedin_url %}
+                                <a href="{{profile.linkedin_url}}"
+                                   target="_blank"
+                                   rel="noopener noreferrer"
+                                   class="btn btn-primary orcid"
+                                   aria-label="View {{profile.names}} ORCID Profile (opens in new window)">
+                                    <i aria-hidden="true"></i> ORCID Profile
+                                </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    {% if profile.content %}
+                    <div class="col-xs-12 description_container">
+                        <a href="javascript: void(0);" onclick="expandBiography(this);"
+                           class="read_more"
+                           role="button"
+                           aria-expanded="false"
+                           aria-controls="bio-{{loop.index}}"
+                           aria-label="Read biography of {{profile.names}}">
+                            Biography
+                        </a>
+                        <div class="description"
+                             id="bio-{{loop.index}}"
+                             role="region"
+                             aria-labelledby="bio-button-{{loop.index}}"
+                             hidden>
+                            {{profile.content|raw}}
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>

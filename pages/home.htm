@@ -66,27 +66,25 @@ function onStart(){
 }
 ?>
 ==
-<div class="container">
-
-    <div class="row home_intro">
-        <div class="col-md-12 col-xs-12">
-            {% component 'intro' %}
+<section aria-labelledby="intro-heading">
+    <div class="container">
+        <h1 id="intro-heading" class="sr-only">Welcome</h1>
+        <div class="row home_intro">
+            <div class="col-md-12 col-xs-12">
+                {% component 'intro' %}
+            </div>
         </div>
-    </div>
 
-
-    <div class="row home_about">
-        <div class="col-md-12 col-xs-12">
-        {% component 'about' %}
+        <div class="row home_about">
+            <div class="col-md-12 col-xs-12">
+                {% component 'about' %}
+            </div>
         </div>
-    </div>
-
 
         <div class="row">
             <div class="col-md-6 col-xs-12">
                 <div class="vision">
                     {% component 'vision' %}
-<!--                    <a href="" class="btn btn-primary">Еxplore the GATE service</a>-->
                 </div>
             </div>
             <div class="col-md-6 col-xs-12">
@@ -96,146 +94,222 @@ function onStart(){
             </div>
         </div>
     </div>
+</section>
 
-<div class="container home_solution">
-    {% component 'solution' %}
+<section aria-labelledby="solution-heading">
+    <div class="container home_solution">
+        <h2 id="solution-heading" class="sr-only">Our Solution</h2>
+        {% component 'solution' %}
 
-    <div class="row">
-    {% for role in initiatives %}
-    {% set paragraphs = role.description|split('</p>') %}
-    {% set firstParagraph = paragraphs|first ~ '</p>' %}
-    <div class="col-md-4 col-xs-12 mb-1">
-        <div class="role-item">
-            <div class="role-content">
-                <div>
-                    <img src="{{role.logo.path}}" class="role-image">
-                    <div class="role-title">{{role.title}}</div>
-                    <div class="role-description">{{ firstParagraph|raw }}</div>
-                </div>
-                <a data-toggle="modal" href="#content{{role.id}}" class="read_more">{{'Read more' |_}}</a>
-            </div>
-        </div>
-    </div>
+        <div class="row">
+            {% for role in initiatives %}
+            {% set paragraphs = role.description|split('</p>') %}
+            {% set firstParagraph = paragraphs|first ~ '</p>' %}
 
-        <div class="control-popup modal fade" id="content{{role.id}}">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <article class="col-md-4 col-xs-12 mb-1">
+                <div class="role-item">
+                    <div class="role-content">
                         <div>
-                            <img src="{{role.logo.path}}" class="role-image">
-                            <div class="role-title">{{role.title}}</div>
-                            <div class="role-description">{{ role.description|raw }}</div>
-                            {% if role.website %}
+                            <img src="{{role.logo.path}}" class="role-image" alt="{{role.title}} icon">
+                            <h3 class="role-title">{{role.title}}</h3>
+                            <div class="role-description">{{ firstParagraph|raw }}</div>
+                        </div>
+                        <a href="#content{{role.id}}"
+                           data-toggle="modal"
+                           role="button"
+                           aria-haspopup="dialog"
+                           aria-label="Read more about {{role.title}}"
+                           class="read_more">
+                            {{'Read more' |_}}
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <div class="control-popup modal fade"
+                 id="content{{role.id}}"
+                 tabindex="-1"
+                 role="dialog"
+                 aria-labelledby="modal-title-{{role.id}}"
+                 aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <button type="button"
+                                    class="close"
+                                    data-dismiss="modal"
+                                    aria-label="Close {{role.title}} dialog">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <div>
+                                <img src="{{role.logo.path}}" class="role-image" alt="{{role.title}} icon">
+                                <div id="modal-title-{{role.id}}" class="role-title">{{role.title}}</div>
+                                <div class="role-description">{{ role.description|raw }}</div>
+                                {% if role.website %}
                                 {% set value = role.category_id %}
                                 {% if value == '1' %}
-                                <a class="btn btn-primary" href="{{role.website}}" target="_blank">Click the GATE Service and intersect with the GATE</a>
+                                <a class="btn btn-primary"
+                                   href="{{role.website}}"
+                                   target="_blank"
+                                   rel="noopener noreferrer"
+                                   aria-label="Click the GATE Service (opens in new window)">
+                                    Click the GATE Service and intersect with the GATE
+                                </a>
                                 {% elseif value == '2' %}
-                                <a class="btn btn-primary" href="mailto:buchheit@paedagogik.uni-kiel.de" target="_blank">Contact GATE’s research coordinator</a>
+                                <a class="btn btn-primary"
+                                   href="mailto:buchheit@paedagogik.uni-kiel.de"
+                                   aria-label="Email GATE's research coordinator">
+                                    Contact GATE's research coordinator
+                                </a>
                                 {% elseif value == '3' %}
-                                <a class="btn btn-primary" href="{{role.website}}" target="_blank">Share your needs</a>
+                                <a class="btn btn-primary"
+                                   href="{{role.website}}"
+                                   target="_blank"
+                                   rel="noopener noreferrer"
+                                   aria-label="Share your needs (opens in new window)">
+                                    Share your needs
+                                </a>
                                 {% endif %}
-                            {% endif %}
+                                {% endif %}
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            {% endfor %}
         </div>
-
-
-
-    {% endfor %}
     </div>
-</div>
+</section>
 
-<div class="container lifecycle">
-    {% component 'graphic' %}
-    {% partial 'lifecycle-graphic' %}
-    <a href="/gate-report" class="read_more report">{{'Read more' |_}}</a>
-    <a href="/gate-service" class="read_more service">{{'Read more' |_}}</a>
+<section aria-labelledby="lifecycle-heading">
+    <div class="container lifecycle">
+        <h2 id="lifecycle-heading" class="sr-only">Lifecycle</h2>
+        {% component 'graphic' %}
+        {% partial 'lifecycle-graphic' %}
+        <a href="/gate-report"
+           class="read_more report"
+           aria-label="Read more about GATE Report">
+            {{'Read more' |_}}
+        </a>
+        <a href="/gate-service"
+           class="read_more service"
+           aria-label="Read more about GATE Service">
+            {{'Read more' |_}}
+        </a>
+    </div>
+</section>
 
-</div>
-
-
-
-<div class="container">
-    <div class="row middle-xs between-xs consortium_partners">
-        <div class="col-xs-12 center-xs mb-1 mt-2"><h1 class="display-1">GATE Collaborators</h1></div>
-        <div class="col-xs-12 center-xs">
-            <div class="row">
-                {% for c in consortium_partners %}
-                <div class="col-md col-xs-12 partner_logo">
-                    <a href="{{c.instituion_url}}" target="_blank">
-                        <img alt="{{ c.instituion }}" src="{{c.cover.thumb(auto,47,{'mode':'crop'})}}"></a>
-                </div>
-                {% endfor %}
+<section aria-labelledby="collaborators-heading">
+    <div class="container">
+        <div class="row middle-xs between-xs consortium_partners">
+            <div class="col-xs-12 center-xs mb-1 mt-2">
+                <h2 id="collaborators-heading">GATE Collaborators</h2>
             </div>
-        </div>
-    </div>
-</div>
-
-
-<div class="container">
-    {% if webinars.count() %}
-    <!-- events timeline -->
-    <div class="timeline2 timeline--loaded timeline--horizontal" style="opacity: 1;">
-        <div class="timeline__wrap">
-            <div class="timeline__items">
-                {% for entry in webinars %}
-                {% if entry.start %}
-                <div class="timeline__item">
-                    <div class="timeline__content index_{{entry.id}}">
-                        <div class="date_and_place">
-                            {% if entry.cover_image %}
-                            <img src="{{entry.cover_image.path}}">
-                            {% endif%}
-                            <span class="event_date">{{entry.start | date('m/Y')}}</span>
-                            <span class="event_title">{{entry.title}}</span>
-                        </div>
+            <div class="col-xs-12 center-xs">
+                <div class="row">
+                    {% for c in consortium_partners %}
+                    <div class="col-md col-xs-12 partner_logo">
+                        <a href="{{c.instituion_url}}"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           aria-label="Visit {{c.instituion}} website (opens in new window)">
+                            <img alt="{{c.instituion}} logo"
+                                 src="{{c.cover.thumb(auto,47,{'mode':'crop'})}}">
+                        </a>
                     </div>
+                    {% endfor %}
                 </div>
-                {% endif %}
-                {% endfor %}
-            </div>
-        </div>
-
-        <span class="top_label">ENGAGEMENT</span>
-        <span class="bottom_label">DEPLOYMENT</span>
-
-        <button class="timeline-nav-button timeline-nav-button--prev" disabled="">&nbsp;</button>
-        <button class="timeline-nav-button timeline-nav-button--next">&nbsp;</button>
-        <span class="timeline-divider" style="top: 265px;"></span></div>
-    <script type="text/javascript">
-        timeline(document.querySelectorAll('.timeline2'), {
-            forceVerticalMode: 700,
-            mode: 'horizontal',
-            verticalStartPosition: 'left',
-            visibleItems: 5,
-            startIndex: 0
-        });
-    </script>
-    {% endif %}
-</div>
-
-<div class="container home_banner">
-    {% component 'banner' %}
-</div>
-
-
-
-
-<div class="container">
-    <div class="row middle-xs between-xs consortium_partners">
-        <div class="col-xs-12 center-xs mb-1 mt-2"><h1 class="display-1">GATE Supporters</h1></div>
-        <div class="col-xs-12 center-xs">
-            <div class="row">
-                {% for c in supporting_partners %}
-                <div class="col-md col-xs-12 partner_logo">
-                    <a href="{{c.instituion_url}}" target="_blank">
-                        <img alt="{{ c.instituion }}" src="{{c.cover.thumb(auto,47,{'mode':'crop'})}}"></a>
-                </div>
-                {% endfor %}
             </div>
         </div>
     </div>
-</div>
+</section>
+
+<section aria-labelledby="timeline-heading">
+    <div class="container">
+        <h2 id="timeline-heading" class="sr-only">Events Timeline</h2>
+        {% if webinars.count() %}
+        <div class="timeline2 timeline--loaded timeline--horizontal"
+             role="region"
+             aria-label="Events timeline"
+             style="opacity: 1;">
+            <div class="timeline__wrap">
+                <div class="timeline__items">
+                    {% for entry in webinars %}
+                    {% if entry.start %}
+                    <article class="timeline__item">
+                        <div class="timeline__content index_{{entry.id}}">
+                            <div class="date_and_place">
+                                {% if entry.cover_image %}
+                                <img src="{{entry.cover_image.path}}" alt="{{entry.title}}">
+                                {% endif%}
+                                <time class="event_date" datetime="{{entry.start|date('Y-m')}}">
+                                    {{entry.start | date('m/Y')}}
+                                </time>
+                                <h3 class="event_title">{{entry.title}}</h3>
+                            </div>
+                        </div>
+                    </article>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+
+            <span class="top_label" aria-hidden="true">ENGAGEMENT</span>
+            <span class="bottom_label" aria-hidden="true">DEPLOYMENT</span>
+
+            <button class="timeline-nav-button timeline-nav-button--prev"
+                    disabled
+                    aria-label="Previous events">
+                <span class="sr-only">Previous</span>
+            </button>
+            <button class="timeline-nav-button timeline-nav-button--next"
+                    aria-label="Next events">
+                <span class="sr-only">Next</span>
+            </button>
+            <span class="timeline-divider" style="top: 265px;" aria-hidden="true"></span>
+        </div>
+        <script type="text/javascript">
+            timeline(document.querySelectorAll('.timeline2'), {
+                forceVerticalMode: 700,
+                mode: 'horizontal',
+                verticalStartPosition: 'left',
+                visibleItems: 5,
+                startIndex: 0
+            });
+        </script>
+        {% endif %}
+    </div>
+</section>
+
+<section aria-labelledby="banner-heading">
+    <div class="container home_banner">
+        <h2 id="banner-heading" class="sr-only">Banner</h2>
+        {% component 'banner' %}
+    </div>
+</section>
+
+<section aria-labelledby="supporters-heading">
+    <div class="container">
+        <div class="row middle-xs between-xs consortium_partners">
+            <div class="col-xs-12 center-xs mb-1 mt-2">
+                <h2 id="supporters-heading">GATE Supporters</h2>
+            </div>
+            <div class="col-xs-12 center-xs">
+                <div class="row">
+                    {% for c in supporting_partners %}
+                    <div class="col-md col-xs-12 partner_logo">
+                        <a href="{{c.instituion_url}}"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           aria-label="Visit {{c.instituion}} website (opens in new window)">
+                            <img alt="{{c.instituion}} logo"
+                                 src="{{c.cover.thumb(auto,47,{'mode':'crop'})}}">
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -19,24 +19,27 @@ description_limit = 0
 ==
 {% component 'siteSearchInclude' %}
 
-<div class="container">
-    <h1 class="display-1">GATE Report</h1>
-    <div class="row between-md around-xs">
-        <div class="col-md-8 col-xs-12">
-            {% component 'jumbotron' %}
-        </div>
-        <div class="col-md-4 col-xs-12 end-md center-xs">
-            <div class="pink_circle">
-                Supports targeted Open Science capacity building by annually informing the research ecosystem
-            </div>
-        </div>
-    </div>
+<section aria-labelledby="gate-report-heading">
+    <div class="container">
+        <h1 id="gate-report-heading" class="display-1">GATE Report</h1>
 
-    <div class="row">
-        <div class="col-md-12 col-xs-12">
-            <div class="register_report">
-                {% component 'jumbotron2' %}
+        <div class="row between-md around-xs">
+            <div class="col-md-8 col-xs-12">
+                {% component 'jumbotron' %}
+            </div>
+            <div class="col-md-4 col-xs-12 end-md center-xs">
+                <aside class="pink_circle" aria-label="Key benefit">
+                    Supports targeted Open Science capacity building by annually informing the research ecosystem
+                </aside>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 col-xs-12">
+                <div class="register_report">
+                    {% component 'jumbotron2' %}
+                </div>
             </div>
         </div>
     </div>
-</div>
+</section>
