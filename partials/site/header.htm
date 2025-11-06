@@ -13,19 +13,13 @@ templates = "template1"
 description_limit = 0
 ==
 <nav class="pr-1 pl-1 navbar fixed" id="headernavbar" aria-label="Main navigation">
-    <button
-        id="menuToggle"
-        class="mobile-menu-toggle"
-        aria-expanded="false"
-        aria-controls="mobileMenu"
-        aria-label="Toggle navigation menu">
-        <span class="sr-only">Menu</span>
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-    </button>
 
-    <div id="mobileMenu" class="mobile-menu" hidden>
+
+    <div id="menuToggle" aria-label="Toggle navigation menu">
+        <input type="checkbox" />
+        <span></span>
+        <span></span>
+        <span></span>
         {% component 'menu' %}
     </div>
 
